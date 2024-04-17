@@ -1,0 +1,16 @@
+﻿<Window x:Class="ent.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ent"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="ColourDataGrid" Grid.ColumnSpan="2"/>
+        <Button Content="ItalianoMenu" HorizontalAlignment="Left" Margin="34,26,0,0" VerticalAlignment="Top" Height="113" Width="136" Click="Button_Click1"/>
+        <Button Content="Visitors" HorizontalAlignment="Left" Margin="292,26,0,0" VerticalAlignment="Top" Height="113" Width="136" Click="Button_Click3"/>
+        <Button Content="Waiter" HorizontalAlignment="Left" Margin="518,26,0,0" VerticalAlignment="Top" Height="113" Width="136" Click="Button_Click4"/>
+
+    </Grid>
+</Window>

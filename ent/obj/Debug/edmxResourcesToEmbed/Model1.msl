@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище EL_PATIOModelContainer" CdmEntityContainer="EL_PATIOEntities">
+    <EntitySetMapping Name="ITALIAN_MENU_PATIO">
+      <EntityTypeMapping TypeName="EL_PATIOModel.ITALIAN_MENU_PATIO">
+        <MappingFragment StoreEntitySet="ITALIAN_MENU_PATIO">
+          <ScalarProperty Name="ID_ITALIAN_MENU_PATIO" ColumnName="ID_ITALIAN_MENU_PATIO" />
+          <ScalarProperty Name="ITALIAN_FOOD_PATIO" ColumnName="ITALIAN_FOOD_PATIO" />
+          <ScalarProperty Name="ITALIAN_FOOD_PATIO_PRICE" ColumnName="ITALIAN_FOOD_PATIO_PRICE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VISITOR">
+      <EntityTypeMapping TypeName="EL_PATIOModel.VISITOR">
+        <MappingFragment StoreEntitySet="VISITOR">
+          <ScalarProperty Name="ID_VISITOR" ColumnName="ID_VISITOR" />
+          <ScalarProperty Name="SURNAME_VISITOR" ColumnName="SURNAME_VISITOR" />
+          <ScalarProperty Name="NAME_VISITOR" ColumnName="NAME_VISITOR" />
+          <ScalarProperty Name="MIDDLE_NAME_VISITOR" ColumnName="MIDDLE_NAME_VISITOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WAITHER">
+      <EntityTypeMapping TypeName="EL_PATIOModel.WAITHER">
+        <MappingFragment StoreEntitySet="WAITHER">
+          <ScalarProperty Name="ID_WAITHER" ColumnName="ID_WAITHER" />
+          <ScalarProperty Name="SURNAME_WAITHER" ColumnName="SURNAME_WAITHER" />
+          <ScalarProperty Name="NAME_WAITHER" ColumnName="NAME_WAITHER" />
+          <ScalarProperty Name="MIDDLE_NAME_WAITHER" ColumnName="MIDDLE_NAME_WAITHER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IL_PATIO_RESTARAUNT">
+      <EntityTypeMapping TypeName="EL_PATIOModel.IL_PATIO_RESTARAUNT">
+        <MappingFragment StoreEntitySet="IL_PATIO_RESTARAUNT">
+          <ScalarProperty Name="ID_IL_PATIO_RESTARAUNT" ColumnName="ID_IL_PATIO_RESTARAUNT" />
+          <ScalarProperty Name="WAITHER_ID" ColumnName="WAITHER_ID" />
+          <ScalarProperty Name="VISITOR_ID" ColumnName="VISITOR_ID" />
+          <ScalarProperty Name="ITALIAN_MENU_PATIO_ID" ColumnName="ITALIAN_MENU_PATIO_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

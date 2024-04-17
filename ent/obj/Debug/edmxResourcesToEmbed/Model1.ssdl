@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище EL_PATIOModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "EL_PATIO.dbo.IL_PATIO_RESTARAUNT" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="IL_PATIO_RESTARAUNT">
+    <Key>
+      <PropertyRef Name="ID_IL_PATIO_RESTARAUNT" />
+      <PropertyRef Name="WAITHER_ID" />
+      <PropertyRef Name="VISITOR_ID" />
+      <PropertyRef Name="ITALIAN_MENU_PATIO_ID" />
+    </Key>
+    <Property Name="ID_IL_PATIO_RESTARAUNT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WAITHER_ID" Type="int" Nullable="false" />
+    <Property Name="VISITOR_ID" Type="int" Nullable="false" />
+    <Property Name="ITALIAN_MENU_PATIO_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ITALIAN_MENU_PATIO">
+    <Key>
+      <PropertyRef Name="ID_ITALIAN_MENU_PATIO" />
+    </Key>
+    <Property Name="ID_ITALIAN_MENU_PATIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ITALIAN_FOOD_PATIO" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ITALIAN_FOOD_PATIO_PRICE" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VISITOR">
+    <Key>
+      <PropertyRef Name="ID_VISITOR" />
+    </Key>
+    <Property Name="ID_VISITOR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SURNAME_VISITOR" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NAME_VISITOR" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MIDDLE_NAME_VISITOR" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WAITHER">
+    <Key>
+      <PropertyRef Name="ID_WAITHER" />
+    </Key>
+    <Property Name="ID_WAITHER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SURNAME_WAITHER" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NAME_WAITHER" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MIDDLE_NAME_WAITHER" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__IL_PATIO___ITALI__3F466844">
+    <End Role="ITALIAN_MENU_PATIO" Type="Self.ITALIAN_MENU_PATIO" Multiplicity="1" />
+    <End Role="IL_PATIO_RESTARAUNT" Type="Self.IL_PATIO_RESTARAUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITALIAN_MENU_PATIO">
+        <PropertyRef Name="ID_ITALIAN_MENU_PATIO" />
+      </Principal>
+      <Dependent Role="IL_PATIO_RESTARAUNT">
+        <PropertyRef Name="ITALIAN_MENU_PATIO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IL_PATIO___VISIT__3E52440B">
+    <End Role="VISITOR" Type="Self.VISITOR" Multiplicity="1" />
+    <End Role="IL_PATIO_RESTARAUNT" Type="Self.IL_PATIO_RESTARAUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VISITOR">
+        <PropertyRef Name="ID_VISITOR" />
+      </Principal>
+      <Dependent Role="IL_PATIO_RESTARAUNT">
+        <PropertyRef Name="VISITOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IL_PATIO___WAITH__3D5E1FD2">
+    <End Role="WAITHER" Type="Self.WAITHER" Multiplicity="1" />
+    <End Role="IL_PATIO_RESTARAUNT" Type="Self.IL_PATIO_RESTARAUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAITHER">
+        <PropertyRef Name="ID_WAITHER" />
+      </Principal>
+      <Dependent Role="IL_PATIO_RESTARAUNT">
+        <PropertyRef Name="WAITHER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище EL_PATIOModelContainer">
+    <EntitySet Name="ITALIAN_MENU_PATIO" EntityType="Self.ITALIAN_MENU_PATIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VISITOR" EntityType="Self.VISITOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WAITHER" EntityType="Self.WAITHER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IL_PATIO_RESTARAUNT" EntityType="Self.IL_PATIO_RESTARAUNT" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [IL_PATIO_RESTARAUNT].[ID_IL_PATIO_RESTARAUNT] AS [ID_IL_PATIO_RESTARAUNT], 
+    [IL_PATIO_RESTARAUNT].[WAITHER_ID] AS [WAITHER_ID], 
+    [IL_PATIO_RESTARAUNT].[VISITOR_ID] AS [VISITOR_ID], 
+    [IL_PATIO_RESTARAUNT].[ITALIAN_MENU_PATIO_ID] AS [ITALIAN_MENU_PATIO_ID]
+    FROM [dbo].[IL_PATIO_RESTARAUNT] AS [IL_PATIO_RESTARAUNT]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__IL_PATIO___ITALI__3F466844" Association="Self.FK__IL_PATIO___ITALI__3F466844">
+      <End Role="ITALIAN_MENU_PATIO" EntitySet="ITALIAN_MENU_PATIO" />
+      <End Role="IL_PATIO_RESTARAUNT" EntitySet="IL_PATIO_RESTARAUNT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IL_PATIO___VISIT__3E52440B" Association="Self.FK__IL_PATIO___VISIT__3E52440B">
+      <End Role="VISITOR" EntitySet="VISITOR" />
+      <End Role="IL_PATIO_RESTARAUNT" EntitySet="IL_PATIO_RESTARAUNT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IL_PATIO___WAITH__3D5E1FD2" Association="Self.FK__IL_PATIO___WAITH__3D5E1FD2">
+      <End Role="WAITHER" EntitySet="WAITHER" />
+      <End Role="IL_PATIO_RESTARAUNT" EntitySet="IL_PATIO_RESTARAUNT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

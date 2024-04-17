@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EL_PATIOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ITALIAN_MENU_PATIO">
+    <Key>
+      <PropertyRef Name="ID_ITALIAN_MENU_PATIO" />
+    </Key>
+    <Property Name="ID_ITALIAN_MENU_PATIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ITALIAN_FOOD_PATIO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ITALIAN_FOOD_PATIO_PRICE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="IL_PATIO_RESTARAUNT" Relationship="Self.FK__IL_PATIO___ITALI__3F466844" FromRole="ITALIAN_MENU_PATIO" ToRole="IL_PATIO_RESTARAUNT" />
+  </EntityType>
+  <EntityType Name="VISITOR">
+    <Key>
+      <PropertyRef Name="ID_VISITOR" />
+    </Key>
+    <Property Name="ID_VISITOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SURNAME_VISITOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NAME_VISITOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MIDDLE_NAME_VISITOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="IL_PATIO_RESTARAUNT" Relationship="Self.FK__IL_PATIO___VISIT__3E52440B" FromRole="VISITOR" ToRole="IL_PATIO_RESTARAUNT" />
+  </EntityType>
+  <EntityType Name="WAITHER">
+    <Key>
+      <PropertyRef Name="ID_WAITHER" />
+    </Key>
+    <Property Name="ID_WAITHER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SURNAME_WAITHER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NAME_WAITHER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MIDDLE_NAME_WAITHER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="IL_PATIO_RESTARAUNT" Relationship="Self.FK__IL_PATIO___WAITH__3D5E1FD2" FromRole="WAITHER" ToRole="IL_PATIO_RESTARAUNT" />
+  </EntityType>
+  <EntityType Name="IL_PATIO_RESTARAUNT">
+    <Key>
+      <PropertyRef Name="ID_IL_PATIO_RESTARAUNT" />
+      <PropertyRef Name="WAITHER_ID" />
+      <PropertyRef Name="VISITOR_ID" />
+      <PropertyRef Name="ITALIAN_MENU_PATIO_ID" />
+    </Key>
+    <Property Name="ID_IL_PATIO_RESTARAUNT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WAITHER_ID" Type="Int32" Nullable="false" />
+    <Property Name="VISITOR_ID" Type="Int32" Nullable="false" />
+    <Property Name="ITALIAN_MENU_PATIO_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ITALIAN_MENU_PATIO" Relationship="Self.FK__IL_PATIO___ITALI__3F466844" FromRole="IL_PATIO_RESTARAUNT" ToRole="ITALIAN_MENU_PATIO" />
+    <NavigationProperty Name="VISITOR" Relationship="Self.FK__IL_PATIO___VISIT__3E52440B" FromRole="IL_PATIO_RESTARAUNT" ToRole="VISITOR" />
+    <NavigationProperty Name="WAITHER" Relationship="Self.FK__IL_PATIO___WAITH__3D5E1FD2" FromRole="IL_PATIO_RESTARAUNT" ToRole="WAITHER" />
+  </EntityType>
+  <Association Name="FK__IL_PATIO___ITALI__3F466844">
+    <End Role="ITALIAN_MENU_PATIO" Type="Self.ITALIAN_MENU_PATIO" Multiplicity="1" />
+    <End Role="IL_PATIO_RESTARAUNT" Type="Self.IL_PATIO_RESTARAUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITALIAN_MENU_PATIO">
+        <PropertyRef Name="ID_ITALIAN_MENU_PATIO" />
+      </Principal>
+      <Dependent Role="IL_PATIO_RESTARAUNT">
+        <PropertyRef Name="ITALIAN_MENU_PATIO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IL_PATIO___VISIT__3E52440B">
+    <End Role="VISITOR" Type="Self.VISITOR" Multiplicity="1" />
+    <End Role="IL_PATIO_RESTARAUNT" Type="Self.IL_PATIO_RESTARAUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VISITOR">
+        <PropertyRef Name="ID_VISITOR" />
+      </Principal>
+      <Dependent Role="IL_PATIO_RESTARAUNT">
+        <PropertyRef Name="VISITOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IL_PATIO___WAITH__3D5E1FD2">
+    <End Role="WAITHER" Type="Self.WAITHER" Multiplicity="1" />
+    <End Role="IL_PATIO_RESTARAUNT" Type="Self.IL_PATIO_RESTARAUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAITHER">
+        <PropertyRef Name="ID_WAITHER" />
+      </Principal>
+      <Dependent Role="IL_PATIO_RESTARAUNT">
+        <PropertyRef Name="WAITHER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EL_PATIOEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ITALIAN_MENU_PATIO" EntityType="Self.ITALIAN_MENU_PATIO" />
+    <EntitySet Name="VISITOR" EntityType="Self.VISITOR" />
+    <EntitySet Name="WAITHER" EntityType="Self.WAITHER" />
+    <EntitySet Name="IL_PATIO_RESTARAUNT" EntityType="Self.IL_PATIO_RESTARAUNT" />
+    <AssociationSet Name="FK__IL_PATIO___ITALI__3F466844" Association="Self.FK__IL_PATIO___ITALI__3F466844">
+      <End Role="ITALIAN_MENU_PATIO" EntitySet="ITALIAN_MENU_PATIO" />
+      <End Role="IL_PATIO_RESTARAUNT" EntitySet="IL_PATIO_RESTARAUNT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IL_PATIO___VISIT__3E52440B" Association="Self.FK__IL_PATIO___VISIT__3E52440B">
+      <End Role="VISITOR" EntitySet="VISITOR" />
+      <End Role="IL_PATIO_RESTARAUNT" EntitySet="IL_PATIO_RESTARAUNT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IL_PATIO___WAITH__3D5E1FD2" Association="Self.FK__IL_PATIO___WAITH__3D5E1FD2">
+      <End Role="WAITHER" EntitySet="WAITHER" />
+      <End Role="IL_PATIO_RESTARAUNT" EntitySet="IL_PATIO_RESTARAUNT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
